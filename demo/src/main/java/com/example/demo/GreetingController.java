@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.atomic.AtomicLong;
+import Models.*;
 
 @RestController
 public class GreetingController {
@@ -17,6 +18,15 @@ public class GreetingController {
 
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
 
+    }
+
+    @GetMapping("/greeting/all")
+    public RandomDB greetingAll(){
+        // Get data from database
+        Random rnd = new Random();
+
+        // Return data
+        return new RandomDB("A", 1);
     }
 
 }
