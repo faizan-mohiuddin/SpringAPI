@@ -9,7 +9,7 @@ public class Random {
 
             System.out.println("Step 0");
 
-            Class.forName("com.mysql.jdbc.Driver");
+            //Class.forName("com.mysql.jdbc.Driver");
 
             System.out.println("Step 1");
 
