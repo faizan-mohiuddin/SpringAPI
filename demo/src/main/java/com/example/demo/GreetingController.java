@@ -1,9 +1,11 @@
 package com.example.demo;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.ResultSet;
 import java.util.concurrent.atomic.AtomicLong;
 import Models.*;
 
@@ -21,12 +23,28 @@ public class GreetingController {
     }
 
     @GetMapping("/greeting/all")
-    public RandomDB greetingAll(){
+    public ResultSet greetingAll(){
         // Get data from database
         Random rnd = new Random();
+        ResultSet rs = rnd.getAll();
+
+        try {
+            while (rs.next()) {
+                System.out.println(rs.getString(1) + " " + rs.getInt(2));
+            }
+        }catch(Exception e){
+            System.out.println(e);
+        }
 
         // Return data
-        return new RandomDB("A", 1);
+        return rs;
+    }
+
+    @PostMapping("/greeting")
+    public String greetingInsert(@RequestParam(value="ColA", defaultValue= "") String ColA, @RequestParam(value="ColB", defaultValue = "") int ColB){
+        // Add row to DB
+        Random rnd = new Random();
+        return rnd.insert(ColA, ColB);
     }
 
 }
