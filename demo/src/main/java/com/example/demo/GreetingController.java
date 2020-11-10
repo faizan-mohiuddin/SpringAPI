@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.sql.ResultSet;
 import java.util.concurrent.atomic.AtomicLong;
 import Models.*;
@@ -23,21 +24,11 @@ public class GreetingController {
     }
 
     @GetMapping("/greeting/all")
-    public ResultSet greetingAll(){
+    public List<RandomDB> greetingAll(){
         // Get data from database
         Random rnd = new Random();
-        ResultSet rs = rnd.getAll();
-
-        try {
-            while (rs.next()) {
-                System.out.println(rs.getString(1) + " " + rs.getInt(2));
-            }
-        }catch(Exception e){
-            System.out.println(e);
-        }
-
         // Return data
-        return rs;
+        return rnd.getAll();
     }
 
     @PostMapping("/greeting")

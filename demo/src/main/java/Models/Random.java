@@ -1,6 +1,10 @@
 package Models;
 
+import com.example.demo.RandomDB;
+
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Random {
     Connection con;
@@ -18,14 +22,24 @@ public class Random {
         }
     }
 
-    public ResultSet getAll(){
+    public List getAll(){
         try {
-            this.stmt = this.con.createStatement();
-            ResultSet rs = this.stmt.executeQuery("select * from random");
-            return rs;
+            this.stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from random");
+
+            List<RandomDB> rsreturn = new ArrayList<>();
+
+            while (rs.next()){
+
+                RandomDB rand = new RandomDB(rs.getString(1), rs.getInt(2));
+                rsreturn.add(rand);
+
+            }
+
+            return rsreturn;
         }catch(Exception e){
             ResultSet rs = null;
-            return rs;
+            return null;
         }
     }
 

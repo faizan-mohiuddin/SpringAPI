@@ -2,9 +2,9 @@ package com.example.demo;
 
 public class RandomDB {
     private final String ColA;
-    private final int ColB;
+    private final Integer ColB;
 
-    public RandomDB(String ColA, int ColB) {
+    public RandomDB(String ColA, Integer ColB) {
 
         this.ColA = ColA;
         this.ColB = ColB;
