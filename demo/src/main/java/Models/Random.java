@@ -24,7 +24,7 @@ public class Random {
 
     public List getAll(){
         try {
-            this.stmt = con.createStatement();
+            stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("select * from random");
 
             List<RandomDB> rsreturn = new ArrayList<>();
