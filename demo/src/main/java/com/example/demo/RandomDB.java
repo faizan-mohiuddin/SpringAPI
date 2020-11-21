@@ -24,4 +24,10 @@ public class RandomDB {
         return this.ColB;
 
     }
+
+    public int getID() {
+
+        return this.ID;
+
+    }
 }

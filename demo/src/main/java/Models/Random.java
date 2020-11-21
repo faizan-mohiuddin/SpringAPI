@@ -65,7 +65,7 @@ public class Random {
 
     public RandomDB getRow(int ID){
         try {
-            stmt = con.createStatement();
+            this.stmt = con.createStatement();
             String query = String.format("select * from random where random.id = %2d", ID);
             ResultSet rs = stmt.executeQuery(query);
             rs.next();
