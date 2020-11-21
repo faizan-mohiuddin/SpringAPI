@@ -21,7 +21,7 @@ if __name__ == "__main__":
     tester = SpringAPItester()
 
     # Test getting all data
-    #tester.getAll()
+    tester.getAll()
 
     # Test inserting data
-    tester.insert("Python test script", 445)
+    #tester.insert("Showing JP", 159)
