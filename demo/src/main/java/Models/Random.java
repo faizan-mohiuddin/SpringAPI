@@ -31,7 +31,7 @@ public class Random {
 
             while (rs.next()){
 
-                RandomDB rand = new RandomDB(rs.getString(1), rs.getInt(2));
+                RandomDB rand = new RandomDB(rs.getString(1), rs.getInt(2), rs.getInt(3));
                 rsreturn.add(rand);
 
             }
@@ -60,6 +60,21 @@ public class Random {
             System.out.println(e);
             e.printStackTrace();
             return "An error occured, nothing has been added to 'random' table";
+        }
+    }
+
+    public RandomDB getRow(int ID){
+        try {
+            stmt = con.createStatement();
+            String query = String.format("select * from random where random.id = %2d", ID);
+            ResultSet rs = stmt.executeQuery(query);
+            rs.next();
+            RandomDB rand = new RandomDB(rs.getString(1), rs.getInt(2), rs.getInt(3));
+            return rand;
+
+        }catch(Exception e){
+            System.out.println(e);
+            return null;
         }
     }
 

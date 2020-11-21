@@ -41,4 +41,23 @@ public class GreetingController {
         return rnd.insert(ColA, ColB);
     }
 
+    @GetMapping("/{ID}")
+    public RandomDB getRow(@PathVariable(value="ID") String ID){
+        // Convert string ID to int
+        try{
+            System.out.println("Beginning");
+            System.out.println(ID);
+            int id = Integer.parseInt(ID);
+
+            Random rnd = new Random();
+            return rnd.getRow(id);
+
+        }catch(Exception e){
+            System.out.println("Returning here");
+            System.out.println(e);
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }
