@@ -1,7 +1,6 @@
 package com.example.demo;
 
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.sql.ResultSet;
 import java.util.concurrent.atomic.AtomicLong;
@@ -19,6 +18,7 @@ public class GreetingController {
         return "index";
 
     }
+
     @GetMapping("/greeting")
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
 
@@ -45,7 +45,6 @@ public class GreetingController {
     public RandomDB getRow(@PathVariable(value="ID") int ID){
         // Convert string ID to int
         try{
-
 
             Random rnd = new Random();
             return rnd.getRow(ID);
